@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Line Chart</title>
+</head>
+<body>
+
+    <h2>C1. Line Chart</h2>
+
+    <canvas id="grafik" width="600" height="400"
+    style="border:1px solid gray;"></canvas>
+
+    <script>
+        const canvas = document.getElementById("grafik");
+        const ctx = canvas.getContext("2d");
+
+        // Data grafik
+        let data = [12, 20, 69, 39, 58, 20, 49, 29];
+
+        // Sumbu X dan Y
+        ctx.beginPath();
+        ctx.moveTo(50, 350);
+        ctx.lineTo(50, 30);
+        ctx.lineTo(570, 30);
+        ctx.stroke();
+
+        // Garis grafik
+        ctx.beginPath();
+
+        for (let i = 0; i < data.length; i++) {
+            let x = 50 + (i * 70);
+            let y = 350 - (data[i] * 4);
+
+            if (i == 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Label tanggal
+        ctx.fillStyle = "black";
+
+        for (let i = 0; i < 8; i++) {
+            ctx.fillText(i + 1, 50 + (i * 70), 370);
+        }
+
+        // Label sumbu
+        ctx.fillText("Jumlah", 10, 30);
+        ctx.fillText("Tanggal", 550, 390);
+
+    </script>
+
+</body>
+</html>
